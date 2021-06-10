@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/jason-xiewenqiang/handwriting-jss#readme",
   "devDependencies": {
-    "jest": "^27.0.3"
+    "jest": "^27.0.3",
+    "lodash": "^4.17.21"
   }
 }
