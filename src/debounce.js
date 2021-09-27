@@ -25,3 +25,30 @@ const debounce = function(fn, wait, immediate = false) {
     }
 } 
 module.exports = debounce
+
+const myDebounce = function (fn, wait) {
+    let timer;
+    return function () {
+        const args = arguments;
+        if (timer) {
+            clearTimeout(timer);
+        }
+        timer = setTimeout(() => {
+            fn.apply(this, args);
+        }, wait);
+    }
+}
+
+const myThrottle = function (fn, wait) {
+    const flag = true;
+    return function() {
+        const args = arguments;
+        if (!flag) {
+            flag = false
+            setTimeout(() => {
+                flag = true
+                fn.apply(this, args)
+            }, wait)
+        }
+    }
+}
