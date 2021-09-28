@@ -1,4 +1,9 @@
-Function.prototype.call = function(context, ...arg) {
-    if (!context || context === null) context = window;
-    
+Function.prototype.call = function(context) {
+    context = context || window
+    let args = [...arguments].slice(1)
+    let result
+    context.fn = this
+    result = context.fn(...args)
+    delete context.fn
+    return result
 }

@@ -10,3 +10,14 @@ Function.prototype.bind = function () {
     returnFc.prototype = new func()
     return returnFc
 }
+
+Function.prototype.myBind = function (context) {
+    let args = [...arguments].slice(1)
+    let fn = this
+    return function Fn() {
+        return fn.apply(
+            this instanceof Fn ? this : context,
+            args.concat(...args)
+        )
+    }
+}
