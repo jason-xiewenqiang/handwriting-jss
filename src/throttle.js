@@ -18,3 +18,16 @@ const throttle = function (fn, wait) {
     }
 }
 module.exports = throttle
+
+function throttle1(fn, delay) {
+    let prevTime = Date.now()
+    return function() {
+        let ctx = this
+        let args = arguments
+        let nowTime = Date.now()
+        if (nowTime - prevTime >= delay) {
+            prevTime = nowTime
+            return fn.apply(ctx, args)
+        }
+    }
+}  
